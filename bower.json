@@ -1,7 +1,7 @@
 {
   "name": "strolch-wc-dialog-button",
   "description": "Strolch WebComponent Dialog Button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
     "Robert von Burg"
   ],
@@ -24,7 +24,6 @@
     "strolchjs": "strolch-li/strolchjs#^0.4.4",
     "strolch-wc-styles": "strolch-li/strolch-wc-styles#^0.3.1",
     "strolch-wc-util-behavior": "strolch-li/strolch-wc-util-behavior#^0.1.1",
-    "strolch-wc-localize-behavior": "strolch-li/strolch-wc-localize-behavior#^1.1.12",
 
     "paper-icon-button": "PolymerElements/paper-icon-button#^1.1.6",
     "paper-dialog": "PolymerElements/paper-dialog#^1.1.0",

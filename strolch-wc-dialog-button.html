@@ -6,7 +6,6 @@
 
 <link rel="import" href="../strolch-wc-styles/strolch-wc-styles.html">
 <link rel="import" href="../strolch-wc-util-behavior/strolch-wc-util-behavior.html">
-<link rel="import" href="../strolch-wc-localize-behavior/strolch-wc-localize-behavior.html">
 
 <dom-module id="strolch-wc-dialog-button">
     <template>
@@ -23,8 +22,8 @@
         </style>
 
         <!-- Content -->
-        <paper-icon-button disabled$="{{!dialogContent}}"
-                           icon="{{buttonIcon}}"
+        <paper-icon-button disabled$="[[!dialogContent]]"
+                           icon="[[buttonIcon]]"
                            on-tap="toggleDialog"></paper-icon-button>
 
         <template is="dom-if" if="[[open]]" restamp>
@@ -35,21 +34,16 @@
                           id="paper-dialog"
                           class="aligned-dialog"
                           on-iron-overlay-closed="onClose">
+
                 <template is="dom-if" if="[[dialogHeadline]]">
-                    <h2>{{dialogHeadline}}</h2>
+                    <h2>[[dialogHeadline]]</h2>
                 </template>
-                <template is="dom-if" if="[[isDefined(localizeContent)]]">
-                    <p>[[localize(dialogContent)]]</p>
-                    <template is="dom-if" if="[[isNotEmptyString(supplementaryContent)]]">
-                        <p>[[localize(supplementaryContent)]]</p>
-                    </template>
+
+                <p>[[dialogContent]]</p>
+                <template is="dom-if" if="[[isNotEmptyString(supplementaryContent)]]">
+                    <p>[[supplementaryContent]]</p>
                 </template>
-                <template is="dom-if" if="[[!isDefined(localizeContent)]]">
-                    <p>[[dialogContent]]</p>
-                    <template is="dom-if" if="[[isNotEmptyString(supplementaryContent)]]">
-                        <p>[[supplementaryContent]]</p>
-                    </template>
-                </template>
+
                 <template is="dom-if" if="[[linkUrl]]">
                     <a href$="[[linkUrl]]" target="_blank">
                         <paper-button raised style="margin-bottom: 10px">[[linkName]]</paper-button>
@@ -72,7 +66,7 @@
 
             <!-- Behaviors -->
             behaviors: [
-                StrolchUtilBehavior, StrolchLocalizeBehavior
+                StrolchUtilBehavior
             ],
 
             <!-- Properties -->
@@ -81,18 +75,17 @@
                     type: Boolean,
                     value: false
                 },
-                localizeContent: {
-                    type: Boolean,
-                    value: false
-                },
                 dialogContent: {
-                    type: String
+                    type: String,
+                    value: null
                 },
                 supplementaryContent: {
-                    type: String
+                    type: String,
+                    value: null
                 },
                 newPage: {
-                    type: String
+                    type: String,
+                    value: null
                 }
             },
 
