@@ -138,7 +138,10 @@
                     this.setQueryParamsFromObject(this.parseQueryParams(queryParams));
                 }
 
-                this.fire("strolch-change-page", page, true);
+                this.fire("strolch-change-page", {
+                    page: page,
+                    keepQueryParams: true
+                });
             }
         });
     </script>
