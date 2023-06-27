@@ -13,6 +13,12 @@
             :host {
                 pointer-events: all !important;
                 --max-dialog-width: 600px;
+                --icon: {
+                };
+            }
+
+            paper-icon-button {
+                @apply(--icon);
             }
 
             .title {
@@ -30,6 +36,10 @@
                 margin: 8px 0;
                 @apply(--layout-horizontal);
                 @apply(--layout-center);
+            }
+
+            p {
+                text-align: start;
             }
 
             a {
