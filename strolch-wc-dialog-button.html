@@ -73,21 +73,23 @@
                     </div>
                 </template>
 
-                <p>[[dialogContent]]</p>
-                <template is="dom-if" if="[[isNotEmptyString(supplementaryContent)]]">
-                    <p>[[supplementaryContent]]</p>
-                </template>
+                <div>
+                    <p>[[dialogContent]]</p>
+                    <template is="dom-if" if="[[isNotEmptyString(supplementaryContent)]]">
+                        <p>[[supplementaryContent]]</p>
+                    </template>
 
-                <template is="dom-if" if="[[linkUrl]]">
-                    <a href$="[[linkUrl]]" target="_blank">
-                        <paper-button raised style="margin-bottom: 10px">[[linkName]]</paper-button>
-                    </a>
-                </template>
-                <template is="dom-if" if="[[newPage]]">
-                    <paper-button raised style="margin-left: 24px; margin-bottom: 10px" on-tap="_changePage">
-                        [[linkName]]
-                    </paper-button>
-                </template>
+                    <template is="dom-if" if="[[linkUrl]]">
+                        <a href$="[[linkUrl]]" target="_blank">
+                            <paper-button raised style="margin-bottom: 10px">[[linkName]]</paper-button>
+                        </a>
+                    </template>
+                    <template is="dom-if" if="[[newPage]]">
+                        <paper-button raised style="margin-left: 24px; margin-bottom: 10px" on-tap="_changePage">
+                            [[linkName]]
+                        </paper-button>
+                    </template>
+                </div>
             </paper-dialog>
         </template>
 
@@ -129,13 +131,14 @@
 
                 if (this.open) {
                     this.debounce('open-dlg', function () {
-                        this.$$('#dlg').positionTarget = event.target;
+                        var dlg = this.$$('#dlg');
+                        dlg.positionTarget = event.target;
 
                         // toggle infobox
-                        if (this.$$('#dlg').opened) {
-                            this.$$('#dlg').close();
+                        if (dlg.opened) {
+                            dlg.close();
                         } else {
-                            this.$$('#dlg').open();
+                            dlg.open();
                         }
                     });
                 }
