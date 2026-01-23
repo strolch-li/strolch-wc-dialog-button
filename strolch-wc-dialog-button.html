@@ -50,12 +50,23 @@
                 padding: 0;
             }
 
+            paper-button {
+                min-width: auto;
+            }
+
         </style>
 
         <!-- Content -->
-        <paper-icon-button disabled$="[[!dialogContent]]"
-                           icon="[[buttonIcon]]"
-                           on-tap="toggleDialog"></paper-icon-button>
+        <template is="dom-if" if="[[buttonIcon]]">
+            <paper-icon-button disabled$="[[!dialogContent]]"
+                               icon="[[buttonIcon]]"
+                               on-tap="toggleDialog"></paper-icon-button>
+        </template>
+        <template is="dom-if" if="[[buttonText]]">
+            <paper-button disabled$="[[!dialogContent]]"
+                          on-tap="toggleDialog" raised>[[buttonText]]
+            </paper-button>
+        </template>
 
         <template is="dom-if" if="[[open]]" restamp>
             <paper-dialog id="dlg"
